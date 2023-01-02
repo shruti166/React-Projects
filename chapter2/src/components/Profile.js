@@ -25,7 +25,10 @@ export default function Profile({userName}) {
         <span>Loading...</span>
     ) : (
         <ul>
-            <li>avatar_url : <div><img src= {profile.avatart_url} alt = "" /></div></li>
+            <li>avatar_url : <div><img
+            className='Profile-avatar'
+            src={profile.avatar_url}
+            alt={profile.name}/></div></li>
             <li><span>html_url : </span>{profile.html_url}</li>
             <li><span>repos_url : </span>{profile.repos_url}</li>
             <li><span>name: </span>{profile.name}</li>
