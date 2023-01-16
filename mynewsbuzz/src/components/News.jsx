@@ -7,19 +7,44 @@ export class News extends Component {
         super();
         this.state = {
             articles : [],
-            loading : false
+            loading : false,
+            page : 1,
+            totalResults: ""
         }
     }
     
+    
 
     async componentDidMount() {
-        let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=35cb7732fed34e719c13106477f35e8e";
+        let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=35cb7732fed34e719c13106477f35e8e&page=1&pageize=20";
         let data = await fetch(url);
         let parsedData = await data.json();
        
-        this.setState({articles : parsedData.articles})
+        this.setState({articles : parsedData.articles, totalResults: parsedData.totalResults})
        
     }
+    handlePrev = async() => {
+
+        let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=35cb7732fed34e719c13106477f35e8e&page=${this.state.page-1}&pageize=20`;
+        let data = await fetch(url);
+        let parsedData = await data.json();
+       
+        this.setState({articles : parsedData.articles, page : this.state.page-1})
+        
+    }
+
+    handleNext = async() => {
+        if (this.state.page + 1 > Math.ceil(this.state.totalResults/20)){
+
+        } else {
+            let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=35cb7732fed34e719c13106477f35e8e&page=${this.state.page+1}&pageize=20`;
+            let data = await fetch(url);
+            let parsedData = await data.json();
+           
+            this.setState({articles : parsedData.articles, page : this.state.page+1})
+        }
+    }
+    
   render() {
     return (
       <div className='container my-3'>
@@ -31,6 +56,10 @@ export class News extends Component {
               <NewsItem title = {element.title ? element.title : ""} description = {element.description ? element.description : ""} urlToImage = {!element.urlToImage ?  "https://thumbs.dreamstime.com/b/news-header-background-title-abstract-colorful-global-map-text-hightech-design-blue-colorful-template-90494676.jpg" : element.urlToImage}/>
           </div>  
             })}
+            <div className='container d-flex justify-content-between'>
+                <button type="button" className="btn btn-secondary btn-lg" onClick={this.handlePrev}>Prev</button>
+                <button type="button" className="btn btn-secondary btn-lg" onClick={this.handleNext}>Next</button>
+            </div>
             
            
             
