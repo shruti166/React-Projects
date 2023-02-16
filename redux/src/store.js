@@ -1,7 +1,7 @@
-import { createStore } from 'redux';
+import { legacy_createStore } from 'redux';
 
 import { rootReducers } from './reducer';
 
-const store = createStore(rootReducers);
+const store = legacy_createStore(rootReducers);
 
 export default store;
