@@ -11,7 +11,7 @@ export default function User(props) {
        Action(userData, dispatch);
       };
   return <div>
-    <input type = "text" placeholder = "Enter" value = {userData} onChange = {(e)=>setUserData(e.target.value)}/>
+    <input />
     <button onClick={sendDataToUserAction}>Search</button>
   </div>;
 }
