@@ -20,7 +20,7 @@ export default function NewUser(props) {
     <input placeholder="Enter" value = {userData} onChange ={(e)=> {setUserData(e.target.value)}}/>
     <button onClick={sendData}>ADD USER</button>
     {data.map((elem) => {
-        return <h2>{elem}</h2>
+        return <h2 key = {elem}>{elem}</h2>
     })}
   </div>;
 }
