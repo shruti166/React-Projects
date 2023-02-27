@@ -1,16 +1,10 @@
-import {Store} from '../ReduxStore/Store.js';
+import {store} from '../ReduxStore/Store.js';
 
-export const Action = (data) => {
+export const Action = (data, dispatch) => {
 
-    Store.dispatch({
-        type: 'INC_COUNT',
-        info: data,
+    store.dispatch({
+        type: 'USERS',
+        payload: data,
     })
 }
 
-export const decCountAction = (data) => {
-    Store.dispatch({
-        type: 'DEC_COUNT',
-        info: data,
-    })
-}
