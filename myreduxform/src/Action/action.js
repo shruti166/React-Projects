@@ -7,4 +7,9 @@ export const Action = (data, dispatch) => {
         payload: data,
     })
 }
+export const deleteUser = (data, dispatch) => {
+    dispatch({
+        type: 'DELETE'
+    })
+}
 
