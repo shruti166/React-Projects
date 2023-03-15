@@ -18,6 +18,7 @@ function App() {
       <h1>FireBase React App</h1>
       <h2>hi</h2>
       <button onClick = {putData}>Put Data</button>
+      <button onClick = {putData}>Put Data</button>
     </div>
   );
 }
